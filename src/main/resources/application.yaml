@@ -30,6 +30,6 @@ application:
 
 logging:
   level:
-    root: debug
+    root: info
     org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator: INFO
     org.springframework.cloud.gateway: TRACE
