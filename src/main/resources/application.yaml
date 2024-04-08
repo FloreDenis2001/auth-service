@@ -5,7 +5,7 @@ spring:
     password: Decembrie2001
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto:  update
     properties:
       hibernate-dialect: org.hibernate.dialect.MySQL5Dialect
       hibernate.format_sql: true
@@ -27,3 +27,9 @@ application:
     tokenPrefix: Bearer
     tokenExpirationAfterDays: 7
 
+
+logging:
+  level:
+    root: debug
+    org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator: INFO
+    org.springframework.cloud.gateway: TRACE
