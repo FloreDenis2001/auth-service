@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 
 import org.springframework.http.HttpHeaders;
 
+import java.time.LocalDateTime;
+
 import static org.springframework.http.HttpStatus.OK;
 
 
@@ -52,7 +54,17 @@ public class UserRest {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<RegisterResponse> addStudent(@RequestBody UserDTO user){
+    public ResponseEntity<RegisterResponse> addStudent(){
+
+        UserDTO user= new UserDTO(
+                "John",        // firstName
+                "Doe",         // lastName
+                "1234567890",  // phoneNumber
+                "test@gmail.com",  // email
+                "test@gmail.com",           // password
+                LocalDateTime.now(),     // createdAt
+                true                     // active
+        );
         this.userCommandService.addUser(user);
         User userPrincipal = userQuerryService.findByEmail(user.email()).get();
         HttpHeaders jwtHeader=getJwtHeader(userPrincipal);
